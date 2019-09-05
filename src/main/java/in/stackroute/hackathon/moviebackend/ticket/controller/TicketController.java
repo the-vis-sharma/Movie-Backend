@@ -19,23 +19,14 @@ public class TicketController {
     private TicketServiceInterface ticketServiceInterface;
 
     @PostMapping("tickets")
-    ResponseEntity<Map> addTicket(@RequestParam("username") String username, @RequestBody Ticket ticket) {
-        ticketServiceInterface.addTicket(username, ticket);
-        Map<String, Object> map = new TreeMap<>();
-        map.put("status", HttpStatus.CREATED);
-        map.put("data", ticket);
-        map.put("message", "Ticket booked successfully.");
+    ResponseEntity<Map> addTicket(@RequestBody Ticket ticket) {
+        Map map = ticketServiceInterface.addTicket(ticket);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 
     @GetMapping("tickets")
     ResponseEntity<Map> getTicketByUsername(@RequestParam String username) {
-        List<Ticket> ticketList = ticketServiceInterface.getTicketByUsername(username);
-        Map<String, Object> map = new TreeMap<>();
-        map.put("status", HttpStatus.CREATED);
-        map.put("data", ticketList);
-        map.put("count", ticketList.size());
-        map.put("message", (ticketList.size()==0) ? "No tickets found for user " + username : "Ticket booked successfully.");
+        Map map = ticketServiceInterface.getTicketByUsername(username);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 
