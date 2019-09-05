@@ -25,13 +25,13 @@ public class FavouriteController {
     }
 
     @DeleteMapping("favourites/{favId}")
-    ResponseEntity<Map> removeFavourite(@RequestParam("username") String username, @PathVariable("favId") Integer favId) {
-        Map map = favouriteService.removeFavourite(favId);
+    ResponseEntity<Map> removeFavourite(@RequestBody Favourite favourite) {
+        Map map = favouriteService.removeFavourite(favourite);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 
     @PutMapping("favourites")
-    ResponseEntity<Map> editComment(@RequestParam("username") String username, @RequestBody Favourite favouriteDetail) {
+    ResponseEntity<Map> editComment(@RequestBody Favourite favouriteDetail) {
         Map map = favouriteService.editComment(favouriteDetail);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }

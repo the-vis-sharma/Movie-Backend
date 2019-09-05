@@ -18,9 +18,6 @@ import javax.persistence.Id;
 @ToString
 public class Favourite {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer favId;
     private String username;
     private String imdbId;
     private String comment;
