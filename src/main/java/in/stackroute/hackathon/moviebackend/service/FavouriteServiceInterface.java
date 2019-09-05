@@ -1,10 +1,10 @@
-package in.stackroute.hackathon.moviebackend.dao;
+package in.stackroute.hackathon.moviebackend.service;
 
 import in.stackroute.hackathon.moviebackend.model.Favourite;
 
 import java.util.List;
 
-public interface FavouriteDao {
+public interface FavouriteServiceInterface {
 
     void addFavourite(String username, Favourite favourite);
     void removeFavourite(String username, Integer favId);
