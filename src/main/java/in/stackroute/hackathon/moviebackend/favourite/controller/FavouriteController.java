@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/v1")
 public class FavouriteController {
 
