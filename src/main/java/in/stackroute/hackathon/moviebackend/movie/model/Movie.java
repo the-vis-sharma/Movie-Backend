@@ -3,12 +3,14 @@ package in.stackroute.hackathon.moviebackend.movie.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
+@Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
