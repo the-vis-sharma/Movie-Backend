@@ -1,4 +1,4 @@
-package in.stackroute.hackathon.moviebackend.model;
+package in.stackroute.hackathon.moviebackend.favourite.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

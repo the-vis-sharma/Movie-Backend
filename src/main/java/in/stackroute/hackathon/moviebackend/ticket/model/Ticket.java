@@ -1,4 +1,4 @@
-package in.stackroute.hackathon.moviebackend.model;
+package in.stackroute.hackathon.moviebackend.ticket.model;
 
 
 import lombok.AllArgsConstructor;

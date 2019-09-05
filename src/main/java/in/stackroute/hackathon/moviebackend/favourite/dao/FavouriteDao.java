@@ -1,6 +1,6 @@
-package in.stackroute.hackathon.moviebackend.dao;
+package in.stackroute.hackathon.moviebackend.favourite.dao;
 
-import in.stackroute.hackathon.moviebackend.model.Favourite;
+import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
 
 import java.util.List;
 

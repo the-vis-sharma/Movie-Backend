@@ -1,0 +1,13 @@
+version:  '3'
+
+# docker compose file to run mysql server 
+
+services: 
+  mysql-service:
+    image: mysql
+    container_name: mysql-server
+    ports: 
+      - "3306:3306"
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: "root"

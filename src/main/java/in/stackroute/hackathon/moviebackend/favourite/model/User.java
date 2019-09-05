@@ -1,5 +1,6 @@
-package in.stackroute.hackathon.moviebackend.model;
+package in.stackroute.hackathon.moviebackend.favourite.model;
 
+import in.stackroute.hackathon.moviebackend.ticket.model.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
