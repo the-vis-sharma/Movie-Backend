@@ -8,5 +8,6 @@ import java.util.List;
 public interface FavouriteRepo extends MongoRepository<Favourite, Integer> {
 
     List<Favourite> findAllByUsername(String username);
+    Favourite findByUsernameAndAndImdbId(String username, String imdbId);
 
 }

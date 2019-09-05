@@ -27,8 +27,8 @@ public class FavouriteService implements FavouriteServiceInterface {
     }
 
     @Override
-    public Map<String, Object> removeFavourite(Integer favId) {
-        favouriteDaoImp.removeFavourite(favId);
+    public Map<String, Object> removeFavourite(Favourite favourite) {
+        favouriteDaoImp.removeFavourite(favourite);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.OK);
         map.put("message", "Movie removed from favourite list.");

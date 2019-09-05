@@ -19,13 +19,13 @@ public class FavouriteDaoImp implements FavouriteDao {
     }
 
     @Override
-    public void removeFavourite(Integer favId) {
-        favouriteRepo.deleteById(favId);
+    public void removeFavourite(Favourite favourite) {
+        favouriteRepo.delete(favourite);
     }
 
     @Override
     public void editComment(Favourite favouriteDetail) {
-        Favourite favourite = favouriteRepo.findById(favouriteDetail.getFavId()).get();
+        Favourite favourite = favouriteRepo.findByUsernameAndAndImdbId(favouriteDetail.getUsername(), favouriteDetail.getImdbId());
         favourite.setComment(favouriteDetail.getComment());
         favouriteRepo.save(favourite);
     }

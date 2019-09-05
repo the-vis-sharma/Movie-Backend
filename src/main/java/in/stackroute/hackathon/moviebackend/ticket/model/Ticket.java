@@ -19,9 +19,6 @@ import javax.persistence.Id;
 @ToString
 public class Ticket {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ticketId;
     private String username;
     private String imdbId;
     private int seats;

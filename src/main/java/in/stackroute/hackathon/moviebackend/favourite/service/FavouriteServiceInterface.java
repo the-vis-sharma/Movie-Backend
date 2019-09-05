@@ -8,7 +8,7 @@ import java.util.Map;
 public interface FavouriteServiceInterface {
 
     Map<String, Object> addFavourite(Favourite favourite);
-    Map<String, Object> removeFavourite(Integer favId);
+    Map<String, Object> removeFavourite(Favourite favourite);
     Map<String, Object> editComment(Favourite favouriteDetail);
     Map<String, Object> getFavouriteByUsername(String username);
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface FavouriteDao {
 
     void addFavourite(Favourite favourite);
-    void removeFavourite(Integer favId);
+    void removeFavourite(Favourite favourite);
     void editComment(Favourite favouriteDetail);
     List<Favourite> getFavouriteByUsername(String username);
 
