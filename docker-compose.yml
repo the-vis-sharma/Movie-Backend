@@ -1,13 +1,12 @@
-version:  '3'
+mongo:
+  image: mongo
+  environment:
 
-# docker compose file to run mysql server 
-
-services: 
-  mysql-service:
-    image: mysql
-    container_name: mysql-server
-    ports: 
-      - "3306:3306"
-    restart: always
-    environment: 
-      MYSQL_ROOT_PASSWORD: "root"
+    - MONGO_INITDB_ROOT_USERNAME=root
+    - MONGO_INITDB_ROOT_PASSWORD=pass
+  ports:
+    - "27017:27017"
+  volumes:
+    # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
+    - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+  # no --auth is needed here as presence of username and password add this option automatically
