@@ -3,12 +3,13 @@ package in.stackroute.hackathon.moviebackend.favourite.service;
 import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FavouriteServiceInterface {
 
-    void addFavourite(String username, Favourite favourite);
-    void removeFavourite(String username, Integer favId);
-    void editComment(String username, Favourite favouriteDetail);
-    List<Favourite> getFavouriteByUsername(String username);
+    Map<String, Object> addFavourite(Favourite favourite);
+    Map<String, Object> removeFavourite(Integer favId);
+    Map<String, Object> editComment(Favourite favouriteDetail);
+    Map<String, Object> getFavouriteByUsername(String username);
 
 }
