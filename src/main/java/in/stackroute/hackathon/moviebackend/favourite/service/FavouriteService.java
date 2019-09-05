@@ -2,6 +2,7 @@ package in.stackroute.hackathon.moviebackend.favourite.service;
 
 import in.stackroute.hackathon.moviebackend.favourite.dao.FavouriteDaoImp;
 import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ public class FavouriteService implements FavouriteServiceInterface {
     }
 
     @Override
-    public Map<String, Object> removeFavourite(Favourite favourite) {
-        favouriteDaoImp.removeFavourite(favourite);
+    public Map<String, Object> removeFavourite(ObjectId _id) {
+        favouriteDaoImp.removeFavourite(_id);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.OK);
         map.put("message", "Movie removed from favourite list.");
@@ -36,11 +37,11 @@ public class FavouriteService implements FavouriteServiceInterface {
     }
 
     @Override
-    public Map<String, Object> editComment(Favourite favouriteDetail) {
-        favouriteDaoImp.editComment(favouriteDetail);
+    public Map<String, Object> editComment(ObjectId _id, String comment) {
+        Favourite favourite = favouriteDaoImp.editComment(_id, comment);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
-        map.put("data", favouriteDetail);
+        map.put("data", favourite);
         map.put("message", "Comment updated successfully.");
         return map;
     }
