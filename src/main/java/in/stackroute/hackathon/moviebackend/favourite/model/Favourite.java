@@ -1,10 +1,12 @@
 package in.stackroute.hackathon.moviebackend.favourite.model;
 
+import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Embeddable;
@@ -22,7 +24,10 @@ public class Favourite {
     @Id
     private ObjectId _id;
     private String username;
-    private String imdbId;
+
+    @DBRef
+    private Movie movie;
+
     private String comment;
 
     // ObjectId needs to be converted to string
