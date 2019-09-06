@@ -3,6 +3,7 @@ package in.stackroute.hackathon.moviebackend.ticket.dao;
 import in.stackroute.hackathon.moviebackend.ticket.model.Ticket;
 import in.stackroute.hackathon.moviebackend.ticket.repo.TicketRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class TicketDaoImp implements TicketDao {
     }
 
     @Override
-    public List<Ticket> getTicketByUsername(String username) {
-        return ticketRepo.findTicketByUsername(username);
+    public List<Ticket> getTicketByUsername(String username, int page) {
+        return ticketRepo.findTicketByUsername(username, new PageRequest(page, 12)).getContent();
     }
 }

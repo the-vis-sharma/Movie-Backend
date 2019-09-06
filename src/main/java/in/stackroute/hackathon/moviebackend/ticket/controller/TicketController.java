@@ -25,8 +25,8 @@ public class TicketController {
     }
 
     @GetMapping("tickets")
-    ResponseEntity<Map> getTicketByUsername(@RequestParam String username) {
-        Map map = ticketServiceInterface.getTicketByUsername(username);
+    ResponseEntity<Map> getTicketByUsername(@RequestParam String username, @RequestParam(value = "page", required = false) Integer page) {
+        Map map = ticketServiceInterface.getTicketByUsername(username, (page!=null) ? page : 0);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 

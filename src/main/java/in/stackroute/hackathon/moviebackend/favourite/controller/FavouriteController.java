@@ -39,8 +39,8 @@ public class FavouriteController {
     }
 
     @GetMapping("favourites")
-    ResponseEntity<Map> getFavouriteByUsername(@RequestParam("username") String username) {
-        Map map = favouriteService.getFavouriteByUsername(username);
+    ResponseEntity<Map> getFavouriteByUsername(@RequestParam("username") String username, @RequestParam(value = "page", required = false) Integer page) {
+        Map map = favouriteService.getFavouriteByUsername(username, (page!=null) ? page : 0);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 

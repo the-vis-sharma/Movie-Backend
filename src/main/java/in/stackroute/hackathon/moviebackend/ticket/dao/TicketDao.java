@@ -8,6 +8,6 @@ import java.util.List;
 public interface TicketDao {
 
     void addTicket(Ticket ticket);
-    List<Ticket> getTicketByUsername(String username);
+    List<Ticket> getTicketByUsername(String username, int page);
 
 }

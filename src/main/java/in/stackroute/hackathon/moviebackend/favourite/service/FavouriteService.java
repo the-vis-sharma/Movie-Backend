@@ -47,12 +47,13 @@ public class FavouriteService implements FavouriteServiceInterface {
     }
 
     @Override
-    public Map<String, Object> getFavouriteByUsername(String username) {
-        List<Favourite> favouriteList = favouriteDaoImp.getFavouriteByUsername(username);
+    public Map<String, Object> getFavouriteByUsername(String username, int page) {
+        List<Favourite> favouriteList = favouriteDaoImp.getFavouriteByUsername(username, page);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
         map.put("count", favouriteList.size());
+        map.put("page_no", page);
         map.put("message", (favouriteList.size()==0) ? "No Movie in favourite list." : "All Data loaded.");
         return map;
     }

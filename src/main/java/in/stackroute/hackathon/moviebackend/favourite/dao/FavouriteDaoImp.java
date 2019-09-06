@@ -4,6 +4,7 @@ import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
 import in.stackroute.hackathon.moviebackend.favourite.repo.FavouriteRepo;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class FavouriteDaoImp implements FavouriteDao {
     }
 
     @Override
-    public List<Favourite> getFavouriteByUsername(String username) {
-        return favouriteRepo.findAllByUsername(username);
+    public List<Favourite> getFavouriteByUsername(String username, int page) {
+        return favouriteRepo.findAllByUsername(username, new PageRequest(page, 12)).getContent();
     }
 }

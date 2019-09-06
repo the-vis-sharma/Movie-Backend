@@ -11,6 +11,6 @@ public interface FavouriteServiceInterface {
     Map<String, Object> addFavourite(Favourite favourite);
     Map<String, Object> removeFavourite(ObjectId _id);
     Map<String, Object> editComment(ObjectId _id, String comment);
-    Map<String, Object> getFavouriteByUsername(String username);
+    Map<String, Object> getFavouriteByUsername(String username, int page);
 
 }
