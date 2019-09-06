@@ -11,7 +11,8 @@ import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 public interface MovieServiceInterface{
 	Map<String, Object> addMovie(Movie movie);
     Map<String, Object> getMovieById(ObjectId id);
-    Map<String, Object> getMovies();
-	Map<String, Object> getMoviesByName(String name);
-	
+    Map<String, Object> getMovies(int page);
+	Map<String, Object> getMoviesByName(String name, int page);
+    Map getMoviesByGenre(String genre, int page);
+    Map getMovieByNameAndGenre(String name, String genre, int page);
 }

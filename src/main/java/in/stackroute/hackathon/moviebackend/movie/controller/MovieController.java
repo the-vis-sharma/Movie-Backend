@@ -32,13 +32,21 @@ public class MovieController {
     }
 
     @GetMapping("movies")
-    ResponseEntity<Map> getMovies(@RequestParam(value = "name", required = false) String name) {
+    ResponseEntity<Map> getMovies(@RequestParam(value = "name", required = false) String name,
+                                  @RequestParam(value = "genre", required = false) String genre,
+                                  @RequestParam(value = "page", required = false) Integer page) {
         Map map;
-        if(name != null && !name.isEmpty()) {
-        	map = movieService.getMoviesByName(name);
+        if(name != null && genre != null && !name.isEmpty() && !genre.isEmpty()) {
+            map = movieService.getMovieByNameAndGenre(name, genre, (page !=null) ? page : 0 );
+        }
+        else if(name != null && !name.isEmpty()) {
+        	map = movieService.getMoviesByName(name, (page !=null) ? page : 0 );
+        }
+        else if(genre != null && !genre.isEmpty()) {
+            map = movieService.getMoviesByGenre(genre, (page !=null) ? page : 0 );
         }
         else {
-        	map = movieService.getMovies();
+        	map = movieService.getMovies((page !=null) ? page : 0 );
         }
         return new ResponseEntity(map, HttpStatus.OK);
     }

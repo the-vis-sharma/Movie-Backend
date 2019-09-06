@@ -7,6 +7,7 @@ import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,8 @@ public class MovieService implements MovieServiceInterface {
     }
     
     @Override
-    public Map<String, Object> getMovies() {
-        List<Movie> movieList = movieDaoImpl.getMovies();
+    public Map<String, Object> getMovies(int page) {
+        List<Movie> movieList = movieDaoImpl.getMovies(page);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
         map.put("data", movieList);
@@ -42,8 +43,8 @@ public class MovieService implements MovieServiceInterface {
     }
     
     @Override
-    public Map<String, Object> getMoviesByName(String name) {
-        List<Movie> favouriteList = movieDaoImpl.getMoviesByName(name);
+    public Map<String, Object> getMoviesByName(String name, int page) {
+        List<Movie> favouriteList = movieDaoImpl.getMoviesByName(name, page);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
@@ -51,7 +52,29 @@ public class MovieService implements MovieServiceInterface {
         map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
         return map;
     }
-    
+
+    @Override
+    public Map getMoviesByGenre(String genre, int page) {
+        List<Movie> favouriteList = movieDaoImpl.getMoviesByGenre(genre, page);
+        Map<String, Object> map = new TreeMap<>();
+        map.put("status", HttpStatus.CREATED);
+        map.put("data", favouriteList);
+        map.put("count", favouriteList.size());
+        map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
+        return map;
+    }
+
+    @Override
+    public Map getMovieByNameAndGenre(String name, String genre, int page) {
+        List<Movie> favouriteList = movieDaoImpl.getMoviesByNameAndGenre(name, genre, page);
+        Map<String, Object> map = new TreeMap<>();
+        map.put("status", HttpStatus.CREATED);
+        map.put("data", favouriteList);
+        map.put("count", favouriteList.size());
+        map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
+        return map;
+    }
+
 
     @Override
     public Map<String, Object> getMovieById(ObjectId id) {

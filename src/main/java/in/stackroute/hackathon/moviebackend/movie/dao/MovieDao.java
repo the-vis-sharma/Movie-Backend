@@ -11,7 +11,9 @@ import java.util.List;
 public interface MovieDao {
 
     void addMovie(Movie movie);
-    List<Movie> getMoviesByName(String name);
-    List<Movie> getMovies();
+    List<Movie> getMoviesByName(String name, int page);
+    List<Movie> getMovies(int page);
     Movie getMovieById(ObjectId _id);
+    List<Movie> getMoviesByGenre(String genre, int page);
+    List<Movie> getMoviesByNameAndGenre(String name, String genre, int page);
 }
