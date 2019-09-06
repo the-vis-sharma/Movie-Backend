@@ -1,8 +1,11 @@
 package in.stackroute.hackathon.moviebackend.movie.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import in.stackroute.hackathon.moviebackend.movie.dao.MovieDao;
@@ -19,11 +22,13 @@ public class MovieService implements MovieServiceInterface{
 	}
 
 	@Override
-	public  void addMovie(Movie movie) {	
-//		final String uri = "http://www.omdbapi.com/?apikey=[yourkey]&i=id";
-//		RestTemplate restTemplate = new RestTemplate();
-//		Movie movie = restTemplate.getForObject(uri, Movie.class);
-		movieDao.save(movie);
+	public  Map<String, Object> addMovie(Movie movie) {	
+		Map<String, Object> map = new TreeMap<>();
+        map.put("status", HttpStatus.CREATED);
+        map.put("data", movie);
+        map.put("message", "Movie added to database.");
+		movieDaoImpl.addMovie(movie);
+		return map;
 	}
 
 	@Override

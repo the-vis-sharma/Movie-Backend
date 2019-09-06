@@ -30,11 +30,7 @@ public class MovieController {
 	
 	@PostMapping("movies")
 	ResponseEntity<Map> addMovie(@RequestBody Movie movie) {
-        movieServiceInterface.addMovie(movie);
-        Map<String, Object> map = new TreeMap<>();
-        map.put("status", HttpStatus.CREATED);
-        map.put("data", movie);
-        map.put("message", "Movie added to database.");
+        Map map = movieServiceInterface.addMovie(movie); 
         return new ResponseEntity(map, HttpStatus.CREATED);
     }
 	
