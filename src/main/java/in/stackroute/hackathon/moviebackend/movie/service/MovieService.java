@@ -37,6 +37,7 @@ public class MovieService implements MovieServiceInterface {
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
         map.put("data", movieList);
+        map.put("page_no", page);
         map.put("count", movieList.size());
         map.put("message", "Got movies from database");
         return map;
@@ -49,6 +50,7 @@ public class MovieService implements MovieServiceInterface {
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
         map.put("count", favouriteList.size());
+        map.put("page_no", page);
         map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
         return map;
     }
@@ -60,6 +62,7 @@ public class MovieService implements MovieServiceInterface {
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
         map.put("count", favouriteList.size());
+        map.put("page_no", page);
         map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
         return map;
     }
@@ -71,6 +74,7 @@ public class MovieService implements MovieServiceInterface {
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
         map.put("count", favouriteList.size());
+        map.put("page_no", page);
         map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
         return map;
     }

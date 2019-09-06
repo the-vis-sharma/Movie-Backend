@@ -11,6 +11,6 @@ public interface FavouriteDao {
     void addFavourite(Favourite favourite);
     void removeFavourite(ObjectId _id);
     Favourite editComment(ObjectId _id, String comment);
-    List<Favourite> getFavouriteByUsername(String username);
+    List<Favourite> getFavouriteByUsername(String username, int page);
 
 }

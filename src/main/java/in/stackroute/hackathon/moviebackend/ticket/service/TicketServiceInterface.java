@@ -7,6 +7,6 @@ import java.util.Map;
 public interface TicketServiceInterface {
 
     Map<String, Object> addTicket(Ticket ticket);
-    Map<String, Object> getTicketByUsername(String username);
+    Map<String, Object> getTicketByUsername(String username, int page);
 
 }
