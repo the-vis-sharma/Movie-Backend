@@ -19,7 +19,7 @@ public class FavouriteController {
     private FavouriteServiceInterface favouriteService;
 
     @PostMapping("favourites")
-    ResponseEntity<Map> addFavourite(@RequestParam("username") String username, @RequestBody Favourite favourite) {
+    ResponseEntity<Map> addFavourite(@RequestBody Favourite favourite) {
         Map map = favouriteService.addFavourite(favourite);
         return new ResponseEntity(map, HttpStatus.CREATED);
     }

@@ -2,11 +2,11 @@ package in.stackroute.hackathon.moviebackend.ticket.service;
 
 import in.stackroute.hackathon.moviebackend.ticket.model.Ticket;
 
-import java.util.List;
+import java.util.Map;
 
 public interface TicketServiceInterface {
 
-    void addTicket(String username, Ticket ticket);
-    List<Ticket> getTicketByUsername(String username);
+    Map<String, Object> addTicket(Ticket ticket);
+    Map<String, Object> getTicketByUsername(String username);
 
 }
