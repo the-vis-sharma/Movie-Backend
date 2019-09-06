@@ -1,17 +1,17 @@
 package in.stackroute.hackathon.moviebackend.movie.dao;
 
-import java.util.List;
+import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
+import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 
-import org.springframework.data.jpa.repository.Query;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
-import in.stackroute.hackathon.moviebackend.movie.model.Movie;
-import in.stackroute.hackathon.moviebackend.movie.repo.MovieRepo;
+import java.util.List;
 
+public interface MovieDao {
 
-@Repository
-public interface MovieDao extends MovieRepo{
-	
-	@Query("SELECT m FROM MoviesModel m WHERE m.title=?1")
-	List<Movie> getMoviesByName(String name);
+    void addMovie(Movie movie);
+    List<Movie> getMoviesByName(String name);
+    List<Movie> getMovies();
+    Movie getMovieById(ObjectId _id);
 }

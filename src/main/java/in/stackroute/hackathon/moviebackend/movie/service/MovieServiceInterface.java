@@ -10,8 +10,8 @@ import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 
 public interface MovieServiceInterface{
 	Map<String, Object> addMovie(Movie movie);
-    Map<String, Object> getMovieById(String id);
+    Map<String, Object> getMovieById(ObjectId id);
     Map<String, Object> getMovies();
-	Map<String, Object> getMoviesByName();
+	Map<String, Object> getMoviesByName(String name);
 	
 }

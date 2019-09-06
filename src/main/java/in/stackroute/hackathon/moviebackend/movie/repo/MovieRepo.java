@@ -1,11 +1,15 @@
 package in.stackroute.hackathon.moviebackend.movie.repo;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
-
+import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
 import in.stackroute.hackathon.moviebackend.movie.model.Movie;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface MovieRepo extends MongoRepository<Movie, Integer> {
-	Movie findBy_id(Object _id);
+import java.util.List;
+
+public interface MovieRepo extends MongoRepository<Movie, String> {
+
+    List<Movie> findAllBytitle(String name);
+    Movie findBy_id(ObjectId _id);
 }

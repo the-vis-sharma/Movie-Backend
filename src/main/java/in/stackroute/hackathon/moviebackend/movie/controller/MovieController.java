@@ -35,17 +35,17 @@ public class MovieController {
     ResponseEntity<Map> getMovies(@RequestParam(value = "name", required = false) String name) {
         Map map;
         if(name != null && !name.isEmpty()) {
-        	map = movieService.getMovies();
+        	map = movieService.getMoviesByName(name);
         }
         else {
-        	map = movieService.getMoviesByName();
+        	map = movieService.getMovies();
         }
         return new ResponseEntity(map, HttpStatus.OK);
     }
     
     @GetMapping("movies/{id}")
-    ResponseEntity<Map> getMovieById(@PathVariable("id") String id) {
-        Map map = movieService.getMovieById(id);
+    ResponseEntity<Map> getMovieById(@PathVariable("id") ObjectId _id) {
+        Map map = movieService.getMovieById(_id);
         return new ResponseEntity(map, HttpStatus.OK);
     }
     
