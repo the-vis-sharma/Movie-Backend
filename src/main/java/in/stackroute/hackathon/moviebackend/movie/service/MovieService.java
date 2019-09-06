@@ -1,4 +1,4 @@
-package in.stackroute.hackathon.moviebackend.favourite.service;
+package in.stackroute.hackathon.moviebackend.movie.service;
 
 import in.stackroute.hackathon.moviebackend.favourite.dao.FavouriteDaoImp;
 import in.stackroute.hackathon.moviebackend.favourite.model.Favourite;
@@ -18,45 +18,49 @@ import java.util.TreeMap;
 public class MovieService implements MovieServiceInterface {
 
     @Autowired
-    private MovieDaoImpl movieeDaoImp;
+    private MovieDaoImpl movieDaoImpl;
 
     @Override
     public Map<String, Object> addMovie(Movie movie) {
         movieDaoImpl.addMovie(movie);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
-        map.put("data", favourite);
-        map.put("message", "Movie added to favourite list.");
+        map.put("data", movie);
+        map.put("message", "Movie added to database");
         return map;
     }
-
+    
     @Override
-    public Map<String, Object> removeFavourite(ObjectId _id) {
-        favouriteDaoImp.removeFavourite(_id);
-        Map<String, Object> map = new TreeMap<>();
-        map.put("status", HttpStatus.OK);
-        map.put("message", "Movie removed from favourite list.");
-        return map;
-    }
-
-    @Override
-    public Map<String, Object> editComment(ObjectId _id, String comment) {
-        Favourite favourite = favouriteDaoImp.editComment(_id, comment);
+    public Map<String, Object> getMovies() {
+        List<Movie> movieList = movieDaoImpl.getMovies();
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
-        map.put("data", favourite);
-        map.put("message", "Comment updated successfully.");
+        map.put("data", movieList);
+        map.put("count", movieList.size());
+        map.put("message", "Got movies from database");
         return map;
     }
-
+    
     @Override
-    public Map<String, Object> getFavouriteByUsername(String username) {
-        List<Favourite> favouriteList = favouriteDaoImp.getFavouriteByUsername(username);
+    public Map<String, Object> getMoviesByName(String name) {
+        List<Movie> favouriteList = movieDaoImpl.getMoviesByName(name);
         Map<String, Object> map = new TreeMap<>();
         map.put("status", HttpStatus.CREATED);
         map.put("data", favouriteList);
         map.put("count", favouriteList.size());
-        map.put("message", (favouriteList.size()==0) ? "No Movie in favourite list." : "All Data loaded.");
+        map.put("message", (favouriteList.size()==0) ? "No Movie in movie list." : "All Data loaded.");
         return map;
     }
+    
+
+    @Override
+    public Map<String, Object> getMovieById(ObjectId id) {
+        Movie movie = movieDaoImpl.getMovieById(id);
+        Map<String, Object> map = new TreeMap<>();
+        map.put("status", HttpStatus.CREATED);
+        map.put("data", movie);
+        map.put("message", (movie == null) ? "No Movie in movie list." : "All Data loaded.");
+        return map;
+    }
+
 }
